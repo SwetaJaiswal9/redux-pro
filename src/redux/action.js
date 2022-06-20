@@ -43,7 +43,11 @@ export const fetchNBAPLAYER = () => {
                     .catch((error) => {
                         const errorMsg = error.message;
                         dispatch(fetchNBAPLAYERFailure(errorMsg));
-                        console.log("Error..1111")
+                        console.log("Error..!!!!")
                     })
     }
 }
+
+
+
+
