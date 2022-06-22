@@ -1,4 +1,4 @@
-import { FETCH_GAMESCORE_REQUEST, FETCH_GAMESCORE_SUCCESS, FETCH_GAMESCORE_FAILURE } from './types';
+import { FETCH_GAMESCORE_REQUEST, FETCH_GAMESCORE_SUCCESS, FETCH_GAMESCORE_FAILURE } from './typeGameScore';
 import axios from 'axios';
 
 export const fetchGAMESCORERequest = () => {
@@ -25,12 +25,13 @@ export const fetchNGAMESCORE = () => {
     const options = {
         method: 'GET',
         url: 'https://free-nba.p.rapidapi.com/games',
-        params: {page: '0', per_page: '25', Seasons: '2018'},
+        params: {page: '0', per_page: '25', team_ids: '2', Seasons: '2018'},
         headers: {
           'X-RapidAPI-Key': '2392b8d4c1msh9c5c90efe2fcf2ep130827jsn5dc5f442a558',
           'X-RapidAPI-Host': 'free-nba.p.rapidapi.com'
         }
       };
+      
       
     return (dispatch) => {
             dispatch(fetchGAMESCORERequest());
