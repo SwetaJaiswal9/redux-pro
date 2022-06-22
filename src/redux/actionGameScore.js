@@ -21,31 +21,28 @@ export const fetchGAMESCOREFailure = error => {
     }
 }
 
-export const fetchNGAMESCORE = () => {
+export const fetchNGAMESCORE = (tId) => {
     const options = {
         method: 'GET',
         url: 'https://free-nba.p.rapidapi.com/games',
-        params: {page: '0', per_page: '25', team_ids: '2', Seasons: '2018'},
+        params: `{page: '0', per_page: '25', team_ids: ${tId}, Seasons: '2018'}`,
         headers: {
           'X-RapidAPI-Key': '2392b8d4c1msh9c5c90efe2fcf2ep130827jsn5dc5f442a558',
           'X-RapidAPI-Host': 'free-nba.p.rapidapi.com'
         }
       };
       
-      
     return (dispatch) => {
+
             dispatch(fetchGAMESCORERequest());
-            console.log("Requested..!!!!")
             axios.request(options)
                     .then((response) => {
                         const score = response.data;
                         dispatch(fetchGAMESCORESuccess(score));
-                        console.log("Successful..!!!!")
                     })
                     .catch((error) => {
                         const errorMsg = error.message;
                         dispatch(fetchGAMESCOREFailure(errorMsg));
-                        console.log("Error..!!!!")
                     })
     }
 }

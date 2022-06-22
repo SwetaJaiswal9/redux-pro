@@ -33,17 +33,14 @@ export const fetchNBAPLAYERDETAILS = (id) => {
       };
     return (dispatch) => {
             dispatch(fetchNBAPLAYERDETAILSRequest());
-            console.log("Requested..!!!!")
             axios.request(options)
                     .then((response) => {
                         const playerDetails = response.data;
                         dispatch(fetchNBAPLAYERDETAILSSuccess(playerDetails));
-                        console.log("Successful..!!!!", playerDetails)
                     })
                     .catch((error) => {
                         const errorMsg = error.message;
                         dispatch(fetchNBAPLAYERDETAILSFailure(errorMsg));
-                        console.log("Error..!!!!")
                     })
     }
 }
